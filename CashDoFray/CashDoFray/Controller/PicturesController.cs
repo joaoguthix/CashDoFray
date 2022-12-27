@@ -7,6 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CashDoFray.Configuration;
 using CashDoFray.Model;
+using System.Web.Http;
+using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
+using HttpPutAttribute = Microsoft.AspNetCore.Mvc.HttpPutAttribute;
+using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
+using FromBodyAttribute = Microsoft.AspNetCore.Mvc.FromBodyAttribute;
+using CashDoFray.ViewModel;
+using System.Linq.Expressions;
+using System.Drawing;
+using System.IO.Compression;
+using Microsoft.Web.Helpers;
 
 namespace CashDoFray.Controller
 {
@@ -76,16 +86,57 @@ namespace CashDoFray.Controller
         // POST: api/Pictures
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Picture>> PostPicture(Picture picture)
+        public async Task<ActionResult> Picture()
         {
-            _context.Pictures.Add(picture);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPicture", new { id = picture.Id }, picture);
+            var image = Request.Form.Files[0];
+            byte[] B;
+
+            using (var openReadStream = image.OpenReadStream())
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await openReadStream.CopyToAsync(memoryStream);
+                    B = memoryStream.ToArray();
+                }
+                return Ok(new
+                {
+                    image = B,
+
+                });
+            }
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> OnPostUploadAsync()
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+
+                // Upload the file if less than 2 MB
+                if (memoryStream.Length < 2097152)
+                {
+                    var file = new Picture()
+                    {
+                        Image = memoryStream.ToArray()
+                    };
+
+                    _context.Add(file);
+
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    ModelState.AddModelError("File", "The file is too large.");
+                }
+            }
+
+            return Ok();
         }
 
         // DELETE: api/Pictures/5
-        [HttpDelete("{id}")]
+        [Microsoft.AspNetCore.Mvc.HttpDelete("{id}")]
         public async Task<IActionResult> DeletePicture(int id)
         {
             var picture = await _context.Pictures.FindAsync(id);
@@ -94,7 +145,7 @@ namespace CashDoFray.Controller
                 return NotFound();
             }
 
-            _context.Pictures.Remove(picture);
+            _context.Remove(picture);
             await _context.SaveChangesAsync();
 
             return NoContent();

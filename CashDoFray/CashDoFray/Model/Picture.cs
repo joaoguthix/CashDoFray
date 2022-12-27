@@ -15,5 +15,11 @@ namespace CashDoFray.Model
 
         public string? Description { get; set; }
 
+        public FormFile? image { get; set; }
+
+        internal IDisposable OpenReadStream()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

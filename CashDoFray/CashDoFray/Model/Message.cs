@@ -16,5 +16,6 @@ namespace CashDoFray.Model
         [Required]
         public string? Body { get; set; }
 
+
     }
 }

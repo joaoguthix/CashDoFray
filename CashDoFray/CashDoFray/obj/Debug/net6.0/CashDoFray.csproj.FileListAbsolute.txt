@@ -272,3 +272,12 @@ C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\ru
 C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\System.Net.Http.Formatting.dll
 C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\System.Web.Http.dll
 C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\Swashbuckle.Core.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\Microsoft.Web.Helpers.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\WebMatrix.Data.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\WebMatrix.WebData.dll
+C:\Users\João\source\repos\CashDoFray\CashDoFray\CashDoFray\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

@@ -1,10 +1,15 @@
 ﻿using CashDoFray.Model;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace CashDoFray.Configuration
 {
     public class ContextBase : DbContext
     {
+
         public ContextBase(DbContextOptions<ContextBase> options) : base(options)
         {
 
@@ -13,7 +18,6 @@ namespace CashDoFray.Configuration
         public DbSet<Picture> Pictures { get; set; }
 
         public DbSet<Message> Messages { get; set; }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
